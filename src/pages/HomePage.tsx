@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Button from '@mui/material/Button';
 import { getProductsFromCategoryAndQuery } from '../services/api';
 import { ProductsData } from '../types';
 import Categories from '../components/Categories';
@@ -43,7 +44,7 @@ function HomePage({ itensCar, setItensCar }: PropsHomePage) {
           value={ searchInput }
           onChange={ (e) => setSearchInput(e.target.value) }
         />
-        <button data-testid="query-button" type="submit">Buscar</button>
+        <Button data-testid="query-button" type="submit">Buscar</Button>
       </form>
       <button
         onClick={ handleClick }

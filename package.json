@@ -6,6 +6,10 @@
     "node": "16 || 18"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@fontsource/roboto": "^5.0.5",
+    "@mui/icons-material": "^5.13.7",
     "@mui/material": "^5.13.7",
     "@mui/styled-engine-sc": "^5.12.0",
     "@testing-library/jest-dom": "^5.16.5",
@@ -42,6 +46,7 @@
     "@testing-library/dom": "^8.20.0",
     "@trybe/eslint-config-frontend": "^1.11.3",
     "@types/react-router-dom": "^5.3.3",
+    "@types/styled-components": "^5.1.26",
     "@vitejs/plugin-react-swc": "^3.1.0",
     "@vitest/coverage-c8": "^0.30.1",
     "jsdom": "^21.1.0",
