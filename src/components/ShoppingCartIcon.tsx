@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ProductsData } from '../types';
 
 type PropsIconCart = {
@@ -8,6 +9,7 @@ type PropsIconCart = {
 function ShoppingCartIcon({ itensCar }: PropsIconCart) {
   const qtdCarrinho = JSON.parse(localStorage.getItem('qtdCarrinho') || '0');
   const [amountCart, setAmountCart] = useState(qtdCarrinho);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const setAmountIcon = () => {
@@ -29,6 +31,12 @@ function ShoppingCartIcon({ itensCar }: PropsIconCart) {
         width="50px"
       />
       <p data-testid="shopping-cart-size">{amountCart}</p>
+      <button
+        onClick={ () => navigate('shopping-cart') }
+        data-testid="shopping-cart-button"
+      >
+        Carrinho
+      </button>
     </div>
   );
 }

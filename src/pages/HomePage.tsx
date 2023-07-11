@@ -20,11 +20,6 @@ function HomePage({ itensCar, setItensCar }: PropsHomePage) {
   const [searchInput, setSearchInput] = useState('');
   const [products, setProducts] = useState<ProductsData[]>([]);
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
-
-  const handleClick = () => {
-    navigate('shopping-cart');
-  };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -72,12 +67,6 @@ function HomePage({ itensCar, setItensCar }: PropsHomePage) {
           <ShoppingCartIcon itensCar={ itensCar } />
         </Styled.TitleChild>
       </Styled.Header>
-      <button
-        onClick={ handleClick }
-        data-testid="shopping-cart-button"
-      >
-        Carrinho
-      </button>
       <Categories setProducts={ setProducts } />
       {loading ? <Loading /> : <SearchList
         products={ products }
