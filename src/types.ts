@@ -39,3 +39,8 @@ export type FormData = {
   address: string;
   payment: string;
 };
+
+export type PropsHomePage = {
+  itensCar: ProductsData[];
+  setItensCar: React.Dispatch<React.SetStateAction<ProductsData[]>>
+};
