@@ -1,13 +1,10 @@
 /* eslint-disable react/jsx-max-depth */
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import LogoSacola from '../Public/Group1.svg';
 import Logo from '../Public/Group.svg';
 import { getProductsFromCategoryAndQuery } from '../services/api';
-import { ProductsData, PropsHomePage } from '../types';
-import Categories from '../components/Categories';
-import SearchList from '../components/SearchList';
-import Loading from '../components/Loading';
+import { PropsHomePage } from '../types';
 import ShoppingCartIcon from '../components/ShoppingCartIcon';
 import * as Styled from '../Styles/HomePage.styles';
 
@@ -16,22 +13,37 @@ const path = `M9.145 18.29c-5.042 0-9.145-4.102-9.145-9.145s4.103-9.145 9.145-9.
   6.022s2.702 6.022 6.022 6.022 6.023-2.702 6.023-6.022-2.702-6.022-6.023-6.022zm9.263 
   12.443c-.817 1.176-1.852 2.188-3.046 2.981l5.452 5.453 3.014-3.013-5.42-5.421z`;
 
-function HomePage({ itensCar, setItensCar }: PropsHomePage) {
+function HomePage({ products, itensCar, setProducts }: PropsHomePage) {
   const [searchInput, setSearchInput] = useState('');
-  const [products, setProducts] = useState<ProductsData[]>([]);
-  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setLoading(true);
     const getData = async () => {
       const data = await getProductsFromCategoryAndQuery('', searchInput);
-      setLoading(false);
       setProducts(data.results);
+      navigate('/searchList');
     };
 
     getData();
   };
+
+  const handleClickCategory = () => {
+    setProducts([{
+      quantidade: 1,
+      id: '1',
+      title: 'so pra index',
+      thumbnail: 'string',
+      currency_id: 'string',
+      price: 0.00,
+      available_quantity: 1,
+      shipping: {
+        free_shipping: true,
+      },
+    }]);
+    navigate('/categorys');
+  };
+
   return (
     <>
       <Styled.Header>
@@ -67,12 +79,8 @@ function HomePage({ itensCar, setItensCar }: PropsHomePage) {
           <ShoppingCartIcon itensCar={ itensCar } />
         </Styled.TitleChild>
       </Styled.Header>
-      <Categories setProducts={ setProducts } />
-      {loading ? <Loading /> : <SearchList
-        products={ products }
-        itensCar={ itensCar }
-        setItensCar={ setItensCar }
-      /> }
+      <button onClick={ handleClickCategory }>Exibir Categorias</button>
+      {products.length === 0 ? <div>faca uma busca</div> : <Outlet />}
     </>
   );
 }

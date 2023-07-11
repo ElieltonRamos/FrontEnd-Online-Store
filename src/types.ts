@@ -43,4 +43,6 @@ export type FormData = {
 export type PropsHomePage = {
   itensCar: ProductsData[];
   setItensCar: React.Dispatch<React.SetStateAction<ProductsData[]>>
+  products: ProductsData[];
+  setProducts: React.Dispatch<React.SetStateAction<ProductsData[]>>;
 };
