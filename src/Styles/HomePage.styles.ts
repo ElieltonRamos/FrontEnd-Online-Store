@@ -43,7 +43,7 @@ export const ImgLogo = styled.img`
 
 export const ContainerTitle = styled.div`
   display: flex;
-  column-gap: 10px;
+  column-gap: 1.5rem;
 `;
 
 export const InputSearch = styled.input`
@@ -80,7 +80,7 @@ export const ButtonSearch = styled.button`
   border: none;
   background-color: white;
   color: #212121;
-  padding: 0.4rem;
+  padding: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
