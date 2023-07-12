@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { getCategories, getProductsFromCategoryAndQuery } from '../services/api';
 import { ProductsData } from '../types';
 
@@ -13,11 +14,13 @@ type PropComponent = {
 
 function Categories({ setProducts }: PropComponent) {
   const [categoryList, setCategoryList] = useState<Category[]>([]);
+  const navigate = useNavigate();
 
   const handleClick = (name: string) => {
     const getData = async () => {
       const data = await getProductsFromCategoryAndQuery('', name);
       setProducts(data.results);
+      navigate('/searchList');
     };
     getData();
   };

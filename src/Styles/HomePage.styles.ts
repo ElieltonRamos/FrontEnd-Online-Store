@@ -136,3 +136,41 @@ export const Form = styled.form`
   display: flex;
   height: 2rem;
 `;
+
+// Definindo a animação de pulso
+const pulseAnimation = keyframes`
+  0% {
+    box-shadow: 0 0 0 0 #05bada66;
+  }
+
+  70% {
+    box-shadow: 0 0 0 10px rgba(218, 103, 68, 0%);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(218, 103, 68, 0%);
+  }
+`;
+
+export const ButtonCategorys = styled.button`
+  border: none;
+  color: #fff;
+  background-image: linear-gradient(30deg, #0400ff, #4ce3f7);
+  border-radius: 20px;
+  background-size: 100% auto;
+  font-family: inherit;
+  font-size: 15px;
+  transition: background-position 0.3s ease;
+
+  &:hover {
+    background-position: right center;
+    background-size: 200% auto;
+    animation: ${pulseAnimation} 1.5s infinite;
+  }
+`;
+
+export const DivForm = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  `;

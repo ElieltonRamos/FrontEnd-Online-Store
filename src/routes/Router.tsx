@@ -12,12 +12,14 @@ function Router() {
   const cartLocalStorage = JSON.parse(localStorage.getItem('cart') || '[]');
   const [itensCar, setItensCar] = useState<ProductsData[]>(cartLocalStorage);
   const [products, setProducts] = useState<ProductsData[]>([]);
+  const [Loading, setLoading] = useState(false);
 
   return (
     <Routes>
       <Route
         path="/"
         element={ <HomePage
+          setLoading={ setLoading }
           products={ products }
           setProducts={ setProducts }
           itensCar={ itensCar }
@@ -31,6 +33,7 @@ function Router() {
         <Route
           path="/searchList"
           element={ <SearchList
+            loading={ Loading }
             itensCar={ itensCar }
             products={ products }
             setItensCar={ setItensCar }

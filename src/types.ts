@@ -45,4 +45,5 @@ export type PropsHomePage = {
   setItensCar: React.Dispatch<React.SetStateAction<ProductsData[]>>
   products: ProductsData[];
   setProducts: React.Dispatch<React.SetStateAction<ProductsData[]>>;
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
 };

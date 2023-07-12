@@ -1,14 +1,16 @@
 import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { ProductsData } from '../types';
+import Loading from './Loading';
 
 type SearchListProps = {
   products: ProductsData[];
   itensCar: ProductsData[];
   setItensCar: React.Dispatch<React.SetStateAction<ProductsData[]>>
+  loading: boolean;
 };
 
-function SearchList({ products, itensCar, setItensCar }: SearchListProps) {
+function SearchList({ products, itensCar, setItensCar, loading }: SearchListProps) {
   const handleClickAddCar = (product: ProductsData) => {
     const verifyProduct = itensCar.find((element) => element.id === product.id);
     if (!verifyProduct) {
@@ -28,11 +30,9 @@ function SearchList({ products, itensCar, setItensCar }: SearchListProps) {
   return (
     <section>
       {
-        products.length === 0
+        loading
           ? (
-            <h2 data-testid="home-initial-message">
-              Digite algum termo de pesquisa ou escolha uma categoria.
-            </h2>
+            <Loading />
           ) : (
             products.map((product: ProductsData) => (
               <div key={ product.id } data-testid="product">
