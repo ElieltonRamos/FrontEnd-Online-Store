@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getCategories, getProductsFromCategoryAndQuery } from '../services/api';
 import { ProductsData } from '../types';
+import { Button, ContainerCategorys, Title } from '../Styles/Categorys.styles';
 
 type Category = {
   id: string;
@@ -34,20 +35,20 @@ function Categories({ setProducts }: PropComponent) {
   }, []);
 
   return (
-    <div>
-      <h3>Categorias:</h3>
+    <ContainerCategorys>
+      <Title>Categorias:</Title>
       {categoryList.map((item) => {
         return (
-          <button
+          <Button
             onClick={ () => handleClick(item.name) }
             data-testid="category"
             key={ item.id }
           >
             {item.name}
-          </button>
+          </Button>
         );
       })}
-    </div>
+    </ContainerCategorys>
   );
 }
 

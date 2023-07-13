@@ -153,7 +153,7 @@ const pulseAnimation = keyframes`
 `;
 
 export const ButtonCategorys = styled.button`
-  border: none;
+  border: solid white 0.5px;
   color: #fff;
   background-image: linear-gradient(30deg, #0400ff, #4ce3f7);
   border-radius: 20px;
@@ -174,3 +174,16 @@ export const DivForm = styled.div`
   flex-direction: column;
   gap: 5px;
   `;
+
+export const Typography = styled.h2`
+  margin-top: 15%;
+  color: #31C28D;
+  text-align: center;
+  font-family: Epilogue;
+  font-size: 1.875rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.10313rem;
+  text-transform: uppercase;
+`;

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ProductsData } from '../types';
+import { ButtonCategorys } from '../Styles/HomePage.styles';
 
 type PropsIconCart = {
   itensCar: ProductsData[];
@@ -31,12 +32,12 @@ function ShoppingCartIcon({ itensCar }: PropsIconCart) {
         width="50px"
       />
       <p data-testid="shopping-cart-size">{amountCart}</p>
-      <button
+      <ButtonCategorys
         onClick={ () => navigate('shopping-cart') }
         data-testid="shopping-cart-button"
       >
         Carrinho
-      </button>
+      </ButtonCategorys>
     </div>
   );
 }

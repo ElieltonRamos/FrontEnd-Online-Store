@@ -86,7 +86,10 @@ function HomePage({ products, itensCar, setProducts, setLoading }: PropsHomePage
         </Styled.TitleChild>
       </Styled.Header>
       {products.length === 0
-        ? (<div>Digite algum termo de pesquisa ou escolha uma categoria.</div>)
+        ? (
+          <Styled.Typography>
+            Digite algum termo de pesquisa ou escolha uma categoria.
+          </Styled.Typography>)
         : (<Outlet />)}
     </>
   );
