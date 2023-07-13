@@ -24,6 +24,7 @@ function HomePage({ products, itensCar, setProducts, setLoading }: PropsHomePage
       const data = await getProductsFromCategoryAndQuery('', searchInput);
       setLoading(false);
       setProducts(data.results);
+      navigate('/searchList');
     };
 
     getData();
