@@ -47,7 +47,7 @@ function SearchList({ products, itensCar, setItensCar, loading }: SearchListProp
                     <img src={ product.thumbnail } alt="" height="130rem" />
                     <TitleProduct>{ product.title }</TitleProduct>
                     <PriceContainer>
-                      <Price style={ { fontSize: '0.5rem', marginTop: '3%' } }>R$</Price>
+                      <Price style={ { fontSize: '1rem', marginTop: '3%' } }>R$</Price>
                       <Price>{ product.price }</Price>
                     </PriceContainer>
                     {product.shipping.free_shipping ? (

@@ -49,7 +49,7 @@ export const TitleProduct = styled.p`
 export const Price = styled.p`
   color: #444955;
   font-family: Epilogue;
-  font-size: 1.25rem;
+  font-size: 1.6rem;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
