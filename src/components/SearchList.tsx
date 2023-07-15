@@ -2,7 +2,8 @@ import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import { ProductsData } from '../types';
 import Loading from './Loading';
-import { ContainerProducts } from '../Styles/SearchList.styles';
+import { ButtonProduct, CardProduct, ContainerProducts,
+  TitleProduct, Price, PriceContainer } from '../Styles/SearchList.styles';
 
 type SearchListProps = {
   products: ProductsData[];
@@ -38,27 +39,30 @@ function SearchList({ products, itensCar, setItensCar, loading }: SearchListProp
             <ContainerProducts>
               {
               products.map((product: ProductsData) => (
-                <div key={ product.id } data-testid="product">
+                <CardProduct key={ product.id } data-testid="product">
                   <Link
                     data-testid="product-detail-link"
                     to={ `/details/${product.id}` }
                   >
-                    <p>{ product.title }</p>
-                    <img src={ product.thumbnail } alt="" />
-                    <p>{ `${product.currency_id} ${product.price}` }</p>
+                    <img src={ product.thumbnail } alt="" height="130rem" />
+                    <TitleProduct>{ product.title }</TitleProduct>
+                    <PriceContainer>
+                      <Price style={ { fontSize: '0.5rem', marginTop: '3%' } }>R$</Price>
+                      <Price>{ product.price }</Price>
+                    </PriceContainer>
                     {product.shipping.free_shipping ? (
                       <p data-testid="free-shipping">Frete grátis!</p>
                     ) : (
                       null
                     )}
                   </Link>
-                  <button
+                  <ButtonProduct
                     data-testid="product-add-to-cart"
                     onClick={ () => handleClickAddCar(product) }
                   >
                     Adicionar ao Carrinho
-                  </button>
-                </div>
+                  </ButtonProduct>
+                </CardProduct>
               ))
             }
 
