@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ProductsData } from '../types';
+import { ButtonProduct, CardProduct, ContainerProducts,
+  TitleProduct } from '../Styles/SearchList.styles';
+import { ButtonContainer } from '../Styles/ShoppingCart.styles';
 
 function ShoppingCart() {
   const [products, setProducts] = useState<ProductsData[]>([]);
@@ -40,7 +43,7 @@ function ShoppingCart() {
   }
 
   return (
-    <main>
+    <ContainerProducts>
       {products.length === 0 ? (
         <h2
           data-testid="shopping-cart-empty-message"
@@ -49,39 +52,48 @@ function ShoppingCart() {
         </h2>
       ) : (
         products.map((element) => (
-          <div key={ element.id }>
-            <p data-testid="shopping-cart-product-name">{element.title}</p>
+          <CardProduct key={ element.id }>
+            <TitleProduct data-testid="shopping-cart-product-name">
+              {element.title}
+            </TitleProduct>
             <img src={ element.thumbnail } alt={ element.title } />
-            <p>{element.price}</p>
-            <p data-testid="shopping-cart-product-quantity">{element.quantidade}</p>
-            <button
-              onClick={ () => handleIncrease(element.id) }
-              data-testid="product-increase-quantity"
-            >
-              +
+            <p>{`R$ ${element.price}`}</p>
+            <ButtonContainer>
 
-            </button>
-            <button
-              onClick={ () => handleDecrease(element.id) }
-              data-testid="product-decrease-quantity"
-            >
-              -
+              <p data-testid="shopping-cart-product-quantity">
+                {`Quantidade: ${element.quantidade}` }
+              </p>
+              <ButtonProduct
+                onClick={ () => handleIncrease(element.id) }
+                data-testid="product-increase-quantity"
+              >
+                +
 
-            </button>
-            <button
-              onClick={ () => handleDelete(element.id) }
-              data-testid="remove-product"
-            >
-              X
+              </ButtonProduct>
+              <ButtonProduct
+                onClick={ () => handleDecrease(element.id) }
+                data-testid="product-decrease-quantity"
+              >
+                -
 
-            </button>
-          </div>
+              </ButtonProduct>
+              <ButtonProduct
+                onClick={ () => handleDelete(element.id) }
+                data-testid="remove-product"
+              >
+                X
+
+              </ButtonProduct>
+            </ButtonContainer>
+          </CardProduct>
         ))
       )}
       <Link to="/checkout">
-        <button data-testid="checkout-products">Finalizar compra</button>
+        <ButtonProduct data-testid="checkout-products">
+          Finalizar compra
+        </ButtonProduct>
       </Link>
-    </main>
+    </ContainerProducts>
   );
 }
 

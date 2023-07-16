@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FormData, ProductsData } from '../types';
+import { ContainerInput, Form } from '../Styles/Checkout.styles';
+import { InputSearch } from '../Styles/HomePage.styles';
+import { ButtonProduct } from '../Styles/SearchList.styles';
 
 type CheckoutFormProps = {
   setItensCar: React.Dispatch<React.SetStateAction<ProductsData[]>>
@@ -38,62 +41,65 @@ function CheckoutForm({ setItensCar }: CheckoutFormProps) {
 
     if (values.length === 7 && !hasEmptyValues) {
       setItensCar([]);
-      navigate('/');
+      navigate('/page-end');
     } else {
       setErrorMsg(true);
     }
   };
 
   return (
-    <form onSubmit={ handleSubmit }>
-      <input
-        type="text"
-        name="name"
-        placeholder="Nome Completo"
-        value={ userData.name }
-        onChange={ handleChange }
-        data-testid="checkout-fullname"
-      />
-      <input
-        type="text"
-        name="email"
-        placeholder="Email"
-        value={ userData.email }
-        onChange={ handleChange }
-        data-testid="checkout-email"
-      />
-      <input
-        type="text"
-        name="cpf"
-        placeholder="CPF"
-        value={ userData.cpf }
-        onChange={ handleChange }
-        data-testid="checkout-cpf"
-      />
-      <input
-        type="text"
-        name="phone"
-        placeholder="Telefone"
-        value={ userData.phone }
-        onChange={ handleChange }
-        data-testid="checkout-phone"
-      />
-      <input
-        type="text"
-        name="zipcode"
-        placeholder="CEP"
-        value={ userData.zipcode }
-        onChange={ handleChange }
-        data-testid="checkout-cep"
-      />
-      <input
-        type="text"
-        name="address"
-        placeholder="Endereço"
-        value={ userData.address }
-        onChange={ handleChange }
-        data-testid="checkout-address"
-      />
+    <Form onSubmit={ handleSubmit }>
+      <ContainerInput>
+
+        <InputSearch
+          type="text"
+          name="name"
+          placeholder="Nome Completo"
+          value={ userData.name }
+          onChange={ handleChange }
+          data-testid="checkout-fullname"
+        />
+        <InputSearch
+          type="text"
+          name="email"
+          placeholder="Email"
+          value={ userData.email }
+          onChange={ handleChange }
+          data-testid="checkout-email"
+        />
+        <InputSearch
+          type="text"
+          name="cpf"
+          placeholder="CPF"
+          value={ userData.cpf }
+          onChange={ handleChange }
+          data-testid="checkout-cpf"
+        />
+        <InputSearch
+          type="text"
+          name="phone"
+          placeholder="Telefone"
+          value={ userData.phone }
+          onChange={ handleChange }
+          data-testid="checkout-phone"
+        />
+        <InputSearch
+          type="text"
+          name="zipcode"
+          placeholder="CEP"
+          value={ userData.zipcode }
+          onChange={ handleChange }
+          data-testid="checkout-cep"
+        />
+        <InputSearch
+          type="text"
+          name="address"
+          placeholder="Endereço"
+          value={ userData.address }
+          onChange={ handleChange }
+          data-testid="checkout-address"
+        />
+      </ContainerInput>
       <section>
         <label htmlFor="ticket">
           <input
@@ -140,14 +146,14 @@ function CheckoutForm({ setItensCar }: CheckoutFormProps) {
           Elo
         </label>
       </section>
-      <button
+      <ButtonProduct
         type="submit"
         data-testid="checkout-btn"
       >
         Comprar
-      </button>
+      </ButtonProduct>
       {errorMsg ? <p data-testid="error-msg">Campos inválidos</p> : null}
-    </form>
+    </Form>
   );
 }
 

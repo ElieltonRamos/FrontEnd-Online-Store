@@ -7,6 +7,7 @@ import Checkout from '../pages/Checkout';
 import { ProductsData } from '../types';
 import Categories from '../components/Categories';
 import SearchList from '../components/SearchList';
+import PageEnd from '../pages/PageEnd';
 
 function Router() {
   const cartLocalStorage = JSON.parse(localStorage.getItem('cart') || '[]');
@@ -28,8 +29,9 @@ function Router() {
       >
         <Route path="/categorys" element={ <Categories setProducts={ setProducts } /> } />
         <Route path="/shopping-cart" element={ <ShoppingCart /> } />
-        <Route path="/details/:idDetails" element={ <Details itensCar={ itensCar } /> } />
+        <Route path="/details/:idDetails" element={ <Details /> } />
         <Route path="/checkout" element={ <Checkout setItensCar={ setItensCar } /> } />
+        <Route path="/page-end" element={ <PageEnd /> } />
         <Route
           path="/searchList"
           element={ <SearchList

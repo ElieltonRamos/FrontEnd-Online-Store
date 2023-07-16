@@ -16,6 +16,8 @@ export const TitleChild = styled.div`
   margin-top: 50px;
   width: 100%;
   justify-content: space-between;
+  padding-left: 2rem;
+  padding-right: 2rem;
 `;
 
 export const H1 = styled.h1`
@@ -153,9 +155,9 @@ const pulseAnimation = keyframes`
 `;
 
 export const ButtonCategorys = styled.button`
-  border: solid white 0.5px;
+  border: none;
   color: #fff;
-  background-image: linear-gradient(30deg, #0400ff, #4ce3f7);
+  background-image: linear-gradient(30deg, #2FC18C, #4ce3f7);
   border-radius: 20px;
   background-size: 100% auto;
   font-family: inherit;
@@ -166,6 +168,7 @@ export const ButtonCategorys = styled.button`
     background-position: right center;
     background-size: 200% auto;
     animation: ${pulseAnimation} 1.5s infinite;
+    cursor: pointer;
   }
 `;
 
