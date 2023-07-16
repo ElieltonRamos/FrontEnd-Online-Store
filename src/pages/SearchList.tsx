@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import { ProductsData } from '../types';
-import Loading from './Loading';
 import { ButtonProduct, CardProduct, ContainerProducts,
   TitleProduct, Price, PriceContainer } from '../Styles/SearchList.styles';
+import Loading from '../components/Loading';
 
 type SearchListProps = {
   products: ProductsData[];

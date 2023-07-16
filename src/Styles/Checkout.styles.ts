@@ -15,3 +15,9 @@ export const ContainerInput = styled.div`
   grid-template-columns: 1fr 1fr;
   gap: 10px 30px
 `;
+
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;

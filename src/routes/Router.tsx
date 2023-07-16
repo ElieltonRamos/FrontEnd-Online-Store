@@ -5,8 +5,8 @@ import ShoppingCart from '../pages/ShoppingCart';
 import Details from '../pages/Details';
 import Checkout from '../pages/Checkout';
 import { ProductsData } from '../types';
-import Categories from '../components/Categories';
-import SearchList from '../components/SearchList';
+import Categories from '../pages/Categories';
+import SearchList from '../pages/SearchList';
 import PageEnd from '../pages/PageEnd';
 
 function Router() {
