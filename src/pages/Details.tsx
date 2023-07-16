@@ -1,24 +1,17 @@
 import { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { getProductById } from '../services/api';
-import { ProductDetailsData, ProductsData } from '../types';
+import { ProductDetailsData } from '../types';
 import Attributes from '../components/Attributes';
 import Loading from '../components/Loading';
 import Rating from '../components/Rating';
-import ShoppingCartIcon from '../components/ShoppingCartIcon';
+import { ButtonProduct, CardProduct, Price, PriceContainer,
+  TitleProduct } from '../Styles/SearchList.styles';
+import { DetailsContainer } from '../Styles/Details.styles';
 
-type PropsDetailsIten = {
-  itensCar: ProductsData[]
-};
-
-function Details({ itensCar }: PropsDetailsIten) {
-  const navigate = useNavigate();
+function Details() {
   const [productInfo, setProductInfo] = useState({} as ProductDetailsData);
   const { idDetails } = useParams();
-
-  function handleClick() {
-    navigate('/shopping-cart');
-  }
 
   function handleClickAddToCart(product: ProductDetailsData) {
     const productsList = JSON.parse(localStorage.getItem('cart') || '[]');
@@ -49,37 +42,36 @@ function Details({ itensCar }: PropsDetailsIten) {
 
   return (
     <main>
-      <ShoppingCartIcon itensCar={ itensCar } />
       {productInfo.attributes ? (
-        <div>
-          <button
-            data-testid="shopping-cart-button"
-            onClick={ handleClick }
-          >
-            Carrinho
-          </button>
-          <p data-testid="product-detail-name">{productInfo.title}</p>
-          <p
-            data-testid="product-detail-price"
-          >
-            {` Preço: ${productInfo.currency_id} ${productInfo.price}`}
-          </p>
-          {productInfo.shipping.free_shipping
-          && <p data-testid="free-shipping">Frete grátis!</p>}
-          <img
-            data-testid="product-detail-image"
-            src={ productInfo.thumbnail }
-            alt=""
-          />
-          <Attributes productInfo={ productInfo } />
-          <button
-            data-testid="product-detail-add-to-cart"
-            onClick={ () => handleClickAddToCart(productInfo) }
-          >
-            Adicionar ao carrinho
-          </button>
-          <Rating />
-        </div>
+        <DetailsContainer>
+          <CardProduct style={ { padding: '2rem', gap: '10px' } }>
+            <TitleProduct data-testid="product-detail-name">
+              {productInfo.title}
+            </TitleProduct>
+            <PriceContainer>
+              <Price style={ { fontSize: '1rem', marginTop: '13%' } }>R$</Price>
+              <Price>{ productInfo.price }</Price>
+            </PriceContainer>
+            {productInfo.shipping.free_shipping
+            && <p data-testid="free-shipping">Frete grátis!</p>}
+            <img
+              data-testid="product-detail-image"
+              src={ productInfo.thumbnail }
+              alt=""
+              height="150rem"
+            />
+            <ButtonProduct
+              data-testid="product-detail-add-to-cart"
+              onClick={ () => handleClickAddToCart(productInfo) }
+            >
+              Adicionar ao carrinho
+            </ButtonProduct>
+          </CardProduct>
+          <div>
+            <Attributes productInfo={ productInfo } />
+            <Rating />
+          </div>
+        </DetailsContainer>
       ) : (
         <Loading />
       )}

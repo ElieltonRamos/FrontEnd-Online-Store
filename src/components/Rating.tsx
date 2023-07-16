@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { ButtonProduct } from '../Styles/SearchList.styles';
 
 const INITIAL_STATE = {
   email: '',
@@ -126,7 +127,9 @@ function Rating() {
           onChange={ handleChange }
           value={ formData.message }
         />
-        <button data-testid="submit-review-btn" onClick={ handleSubmit }>Avaliar</button>
+        <ButtonProduct data-testid="submit-review-btn" onClick={ handleSubmit }>
+          Avaliar
+        </ButtonProduct>
       </form>
       {(reviews.length > 0)
       && (

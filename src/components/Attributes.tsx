@@ -1,3 +1,4 @@
+import { TitleProduct } from '../Styles/SearchList.styles';
 import { ProductDetailsData } from '../types';
 
 type AttributesProps = {
@@ -7,7 +8,7 @@ type AttributesProps = {
 function Attributes({ productInfo }: AttributesProps) {
   return (
     <section>
-      <h2>Informações Técnicas</h2>
+      <TitleProduct>Informações Técnicas</TitleProduct>
       <ul>
         <li>
           {`${productInfo.attributes[0]?.name}: ${productInfo.attributes[0]?.value_name}`}
