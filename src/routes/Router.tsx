@@ -28,7 +28,13 @@ function Router() {
         /> }
       >
         <Route path="/categorys" element={ <Categories setProducts={ setProducts } /> } />
-        <Route path="/shopping-cart" element={ <ShoppingCart /> } />
+        <Route
+          path="/shopping-cart"
+          element={ <ShoppingCart
+            products={ itensCar }
+            setProducts={ setItensCar }
+          /> }
+        />
         <Route path="/details/:idDetails" element={ <Details /> } />
         <Route path="/checkout" element={ <Checkout setItensCar={ setItensCar } /> } />
         <Route path="/page-end" element={ <PageEnd /> } />

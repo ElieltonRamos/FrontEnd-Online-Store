@@ -33,6 +33,10 @@ export const ButtonProduct = styled.button`
   line-height: normal;
   width: 85%;
   margin-bottom: 1rem;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export const TitleProduct = styled.p`
